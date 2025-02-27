@@ -1,524 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Listening Test</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
-        .section { margin-bottom: 30px; }
-        .audio-player { margin-top: 10px; }
-        h2 { margin-bottom: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid black; padding: 8px; text-align: left; }
-        .timer { font-size: 20px; font-weight: bold; color: red; }
-        .result { font-size: 18px; font-weight: bold; margin-top: 20px; }
-    </style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IELTS Intensive Final Test</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            .container { display: flex; height: 80vh; }
+            .left, .right { width: 50%; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; }
+            .timer { font-size: 18px; font-weight: bold; }
+            .question-box { border: 1px solid #000; padding: 10px; margin-top: 10px; }
+            .incorrect { color: red; font-weight: bold; }
+            .correct-answer { color: green; font-weight: bold; }
+            .highlight { background-color: yellow; }
+        </style>
+    </head>
+<script>
+    function startTimer(duration, display) {
+        let timer = duration, hours, minutes, seconds;
+        setInterval(function () {
+            hours = Math.floor(timer / 3600);
+            minutes = Math.floor((timer % 3600) / 60);
+            seconds = timer % 60;
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = "Time left: " + hours + ":" + minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = 0; // Dừng khi hết giờ
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        let duration = 3900; // 1 giờ 5 phút (3900 giây)
+        let display = document.getElementById("timer");
+        startTimer(duration, display);
+    };
+</script>
+
+<body>
+    <h1>IELTS INTENSIVE FINAL TEST</h1>
+    <label for="name">Name: </label>
+    <input type="text" id="name" placeholder="Enter your name" required>
+    <p class="timer" id="timer">Time left: 1:05:00</p>
+    <p><button onclick="highlightSelection()">Highlight</button>
+        <button onclick="removeHighlight()">Remove Highlight</button></p>
+    <div class="container">
+        <div class="left" id="passage">
+            <h2>Reading Passage 1</h2>
+            <p>You should spend about 20 minutes on <strong>Questions 1–13</strong>, which are based on Reading
+                Passage 1 below.</p>
+            <h3>The Dead Sea Scrolls</h3>
+                <p id="text-content">
+                In late 1946 or early 1947, three Bedouin teenagers were tending their goats and sheep
+                near the ancient settlement of Qumran, located on the northwest shore of the Dead
+                Sea in what is now known as the West Bank. One of these young shepherds tossed a
+                rock into an opening on the side of a cliff and was surprised to hear a shattering sound.
+                He and his companions later entered the cave and stumbled across a collection of
+                large clay jars, seven of which contained scrolls with writing on them. The teenagers
+                took the seven scrolls to a nearby town where they were sold for a small sum to a local
+                antiquities dealer. Word of the find spread, and Bedouins and archaeologists eventually
+                unearthed tens of thousands of additional scroll fragments from 10 nearby caves;
+                together they make up between 800 and 900 manuscripts. It soon became clear that this
+                was one of the greatest archaeological discoveries ever made.</p>
+                <p id="text-content">
+                The origin of the Dead Sea Scrolls, which were written around 2,000 years ago between
+                150 BCE and 70 CE, is still the subject of scholarly debate even today. According to the
+                prevailing theory, they are the work of a population that inhabited the area until Roman
+                troops destroyed the settlement around 70 CE. The area was known as Judea at that
+                time, and the people are thought to have belonged to a group called the Essenes, a
+                devout Jewish sect.</p>
+                <p id="text-content">The majority of the texts on the Dead Sea Scrolls are in Hebrew, with some fragments
+                written in an ancient version of its alphabet thought to have fallen out of use in the fifth
+                century BCE. But there are other languages as well. Some scrolls are in Aramaic, the
+                language spoken by many inhabitants of the region from the sixth century BCE to the
+                siege of Jerusalem in 70 CE. In addition, several texts feature translations of the Hebrew
+                Bible into Greek.</p>
+                <p id="text-content">
+                The Dead Sea Scrolls include fragments from every book of the Old Testament of the
+                Bible except for the Book of Esther. The only entire book of the Hebrew Bible preserved
+                among the manuscripts from Qumran is Isaiah; this copy, dated to the first century BCE,
+                is considered the earliest biblical manuscript still in existence. Along with biblical texts,
+                the scrolls include documents about sectarian regulations and religious writings that do
+                not appear in the Old Testament.</p>
+                <p id="text-content">
+                The writing on the Dead Sea Scrolls is mostly in black or occasionally red ink, and
+                the scrolls themselves are nearly all made of either parchment (animal skin) or an
+                early form of paper called ‘papyrus’. The only exception is the scroll numbered 3Q15,
+                which was created out of a combination of copper and tin. Known as the Copper
+                Scroll, this curious document features letters chiselled onto metal – perhaps, as some
+                have theorized, to better withstand the passage of time. One of the most intriguing
+                manuscripts from Qumran, this is a sort of ancient treasure map that lists dozens of gold
+                and silver caches. Using an unconventional vocabulary and odd spelling, it describes 64
+                underground hiding places that supposedly contain riches buried for safekeeping. None
+                of these hoards have been recovered, possibly because the Romans pillaged Judea
+                during the first century CE. According to various hypotheses, the treasure belonged to
+                local people, or was rescued from the Second Temple before its destruction or never
+                existed to begin with.</p>
+                <p id="text-content">
+                Some of the Dead Sea Scrolls have been on interesting journeys. In 1948, a Syrian
+                Orthodox archbishop known as Mar Samuel acquired four of the original seven scrolls
+                from a Jerusalem shoemaker and part-time antiquity dealer, paying less than $100
+                for them. He then travelled to the United States and unsuccessfully offered them to a
+                number of universities, including Yale. Finally, in 1954, he placed an advertisement in
+                the business newspaper The Wall Street Journal – under the category ‘Miscellaneous
+                Items for Sale’ – that read: ‘Biblical Manuscripts dating back to at least 200 B.C. are for
+                sale. This would be an ideal gift to an educational or religious institution by an individual
+                or group.’ Fortunately, Israeli archaeologist and statesman Yigael Yadin negotiated their
+                purchase and brought the scrolls back to Jerusalem, where they remain to this day.</p></p>
+                In 2017, researchers from the University of Haifa restored and deciphered one of the last
+                untranslated scrolls. The university’s Eshbal Ratson and Jonathan Ben-Dov spent one
+                year reassembling the 60 fragments that make up the scroll. Deciphered from a band
+                of coded text on parchment, the find provides insight into the community of people who
+                wrote it and the 364-day calendar they would have used. The scroll names celebrations
+                that indicate shifts in seasons and details two yearly religious events known from
+                another Dead Sea Scroll. Only one more known scroll remains untranslated.</p>
+                <h2>Reading Passage 2</h2>
+            </p>You should spend about 20 minutes on <strong>Questions 14–26</strong>, which are based on Reading
+            Passage 2 below.</p>
+            <h3>A second attempt at domesticating the tomato</h3>
+            <h3>A</h3> <p id="text-content">It took at least 3,000 years for humans to learn how to domesticate the wild tomato
+                and cultivate it for food. Now two separate teams in Brazil and China have done it all
+                over again in less than three years. And they have done it better in some ways, as
+                the re-domesticated tomatoes are more nutritious than the ones we eat at present.
+                This approach relies on the revolutionary CRISPR genome editing technique, in
+                which changes are deliberately made to the DNA of a living cell, allowing genetic
+                material to be added, removed or altered. The technique could not only improve
+                existing crops, but could also be used to turn thousands of wild plants into useful
+                and appealing foods. In fact, a third team in the US has already begun to do this
+                with a relative of the tomato called the groundcherry.
+                This fast-track domestication could help make the world’s food supply healthier and
+                far more resistant to diseases, such as the rust fungus devastating wheat crops.
+                ‘This could transform what we eat,’ says Jorg Kudla at the University of Munster in
+                Germany, a member of the Brazilian team. ‘There are 50,000 edible plants in the
+                world, but 90 percent of our energy comes from just 15 crops.’
+                ‘We can now mimic the known domestication course of major crops like rice, maize,
+                sorghum or others,’ says Caixia Gao of the Chinese Academy of Sciences in Beijing.
+                ‘Then we might try to domesticate plants that have never been domesticated.’</p>
+            <h3>B</h3> <p id="text-content">Wild tomatoes, which are native to the Andes region in South America, produce
+                pea-sized fruits. Over many generations, peoples such as the Aztecs and Incas
+                transformed the plant by selecting and breeding plants with mutations* in their
+                genetic structure, which resulted in desirable traits such as larger fruit.
+                But every time a single plant with a mutation is taken from a larger population for
+                breeding, much genetic diversity is lost. And sometimes the desirable mutations
+                come with less desirable traits. For instance, the tomato strains grown for
+                supermarkets have lost much of their flavour.
+                By comparing the genomes of modern plants to those of their wild relatives,
+                biologists have been working out what genetic changes occurred as plants were
+                domesticated. The teams in Brazil and China have now used this knowledge to
+                reintroduce these changes from scratch while maintaining or even enhancing the
+                desirable traits of wild strains.</p>
+            <h3>C</h3> <p id="text-content">Kudla’s team made six changes altogether. For instance, they tripled the size
+                of fruit by editing a gene called FRUIT WEIGHT, and increased the number of
+                tomatoes per truss by editing another called MULTIFLORA.
+                While the historical domestication of tomatoes reduced levels of the red pigment
+                lycopene – thought to have potential health benefits – the team in Brazil managed
+                to boost it instead. The wild tomato has twice as much lycopene as cultivated ones;
+                the newly domesticated one has five times as much.
+                ‘They are quite tasty,’ says Kudla. ‘A little bit strong. And very aromatic.’
+                The team in China re-domesticated several strains of wild tomatoes with desirable
+                traits lost in domesticated tomatoes. In this way they managed to create a strain
+                resistant to a common disease called bacterial spot race, which can devastate
+                yields. They also created another strain that is more salt tolerant – and has higher
+                levels of vitamin C.</p>
+            <h3>D</h3> <p id="text-content">Meanwhile, Joyce Van Eck at the Boyce Thompson Institute in New York state
+                decided to use the same approach to domesticate the groundcherry or goldenberry
+                (Physalis pruinosa) for the first time. This fruit looks similar to the closely related
+                Cape gooseberry (Physalis peruviana).
+                Groundcherries are already sold to a limited extent in the US but they are hard to
+                produce because the plant has a sprawling growth habit and the small fruits fall
+                off the branches when ripe. Van Eck’s team has edited the plants to increase fruit
+                size, make their growth more compact and to stop fruits dropping. ‘There’s potential
+                for this to be a commercial crop,’ says Van Eck. But she adds that taking the
+                work further would be expensive because of the need to pay for a licence for the
+                CRISPR technology and get regulatory approval.</p>
+            <h3>E</h3> <p id="text-content">This approach could boost the use of many obscure plants, says Jonathan Jones
+                of the Sainsbury Lab in the UK. But it will be hard for new foods to grow so popular
+                with farmers and consumers that they become new staple crops, he thinks.
+                The three teams already have their eye on other plants that could be ‘catapulted
+                into the mainstream’, including foxtail, oat-grass and cowpea. By choosing wild
+                plants that are drought or heat tolerant, says Gao, we could create crops that will
+                thrive even as the planet warms.
+                But Kudla didn’t want to reveal which species were in his team’s sights, because
+                CRISPR has made the process so easy. ‘Any one with the right skills could go to
+                their lab and do this.’</p>
+                <h2>Reading Passage 3</h2>
+            </p>YYou should spend about 20 minutes on <strong>Questions 27–40</strong>, which are based on Reading
+            Passage 3 below.</p>
+            <h3>Insight or evolution?</h3>
+            <i id="text-content">Two scientists consider the origins of discoveries and other innovative behavior</i> 
+                <p id="text-content">Scientific discovery is popularly believed to result from the sheer genius of such intellectual
+                    stars as naturalist Charles Darwin and theoretical physicist Albert Einstein. Our view of such
+                    unique contributions to science often disregards the person’s prior experience and the efforts of
+                    their lesser-known predecessors. Conventional wisdom also places great weight on insight in
+                    promoting breakthrough scientific achievements, as if ideas spontaneously pop into someone’s
+                    head – fully formed and functional.</p>
+                <p id="text-content">There may be some limited truth to this view. However, we believe that it largely misrepresents
+                    the real nature of scientific discovery, as well as that of creativity and innovation in many other
+                    realms of human endeavor.</p>
+                <p id="text-content">Setting aside such greats as Darwin and Einstein – whose monumental contributions are duly
+                    celebrated – we suggest that innovation is more a process of trial and error, where two steps
+                    forward may sometimes come with one step back, as well as one or more steps to the right or
+                    left. This evolutionary view of human innovation undermines the notion of creative genius and
+                    recognizes the cumulative nature of scientific progress.</p>
+                <p id="text-content">Consider one unheralded scientist: John Nicholson, a mathematical physicist working in the
+                    1910s who postulated the existence of ‘proto-elements’ in outer space. By combining different
+                    numbers of weights of these proto-elements’ atoms, Nicholson could recover the weights of all
+                    the elements in the then-known periodic table. These successes are all the more noteworthy given
+                    the fact that Nicholson was wrong about the presence of proto-elements: they do not actually
+                    exist. Yet, amid his often fanciful theories and wild speculations, Nicholson also proposed a novel
+                    theory about the structure of atoms. Niels Bohr, the Nobel prize-winning father of modern atomic
+                    theory, jumped off from this interesting idea to conceive his now-famous model of the atom.</p>
+                <p id="text-content">What are we to make of this story? One might simply conclude that science is a collective and
+                    cumulative enterprise. That may be true, but there may be a deeper insight to be gleaned. We
+                    propose that science is constantly evolving, much as species of animals do. In biological systems,
+                    organisms may display new characteristics that result from random genetic mutations. In the same
+                    way, random, arbitrary or accidental mutations of ideas may help pave the way for advances in
+                    science. If mutations prove beneficial, then the animal or the scientific theory will continue to
+                    thrive and perhaps reproduce.</p>
+                <p id="text-content">Support for this evolutionary view of behavioral innovation comes from many domains. Consider
+                    one example of an influential innovation in US horseracing. The so-called ‘acey-deucy’ stirrup
+                    placement, in which the rider’s foot in his left stirrup is placed as much as 25 centimeters lower
+                    than the right, is believed to confer important speed advantages when turning on oval tracks. It
+                    was developed by a relatively unknown jockey named Jackie Westrope. Had Westrope conducted
+                    methodical investigations or examined extensive film records in a shrewd plan to outrun his
+                    rivals? Had he foreseen the speed advantage that would be conferred by riding acey-deucy? No.
+                    He suffered a leg injury, which left him unable to fully bend his left knee. His modification just
+                    happened to coincide with enhanced left-hand turning performance. This led to the rapid and
+                    widespread adoption of riding acey-deucy by many riders, a racing style which continues in
+                    today’s thoroughbred racing.</p>
+                <p id="text-content">Plenty of other stories show that fresh advances can arise from error, misadventure, and also
+                        pure serendipity – a happy accident. For example, in the early 1970s, two employees of the
+                        company 3M each had a problem: Spencer Silver had a product – a glue which was only slightly
+                        sticky – and no use for it, while his colleague Art Fry was trying to figure out how to affix
+                        temporary bookmarks in his hymn book without damaging its pages. The solution to both these
+                        problems was the invention of the brilliantly simple yet phenomenally successful Post-It note.
+                        Such examples give lie to the claim that ingenious, designing minds are responsible for human
+                        creativity and invention. Far more banal and mechanical forces may be at work; forces that are
+                        fundamentally connected to the laws of science.</p>
+                <p id="text-content">The notions of insight, creativity and genius are often invoked, but they remain vague and of
+                    doubtful scientific utility, especially when one considers the diverse and enduring contributions of
+                    individuals such as Plato, Leonardo da Vinci, Shakespeare, Beethoven, Galileo, Newton, Kepler,
+                    Curie, Pasteur and Edison. These notions merely label rather than explain the evolution of human
+                    innovations. We need another approach, and there is a promising candidate.</p>
+                <p id="text-content">The Law of Effect was advanced by psychologist Edward Thorndike in 1898, some 40 years
+                    after Charles Darwin published his groundbreaking work on biological evolution, On the Origin
+                    of Species. This simple law holds that organisms tend to repeat successful behaviors and to
+                    refrain from performing unsuccessful ones. Just like Darwin’s Law of Natural Selection, the Law
+                    of Effect involves an entirely mechanical process of variation and selection, without any end
+                    objective in sight.</p>
+                <p id="text-content">Of course, the origin of human innovation demands much further study. In particular, the
+                    provenance of the raw material on which the Law of Effect operates is not as clearly known as
+                    that of the genetic mutations on which the Law of Natural Selection operates. The generation of
+                    novel ideas and behaviors may not be entirely random, but constrained by prior successes and
+                    failures – of the current individual (such as Bohr) or of predecessors (such as Nicholson).</p>
+                <p id="text-content">The time seems right for abandoning the naive notions of intelligent design and genius, and for
+                    scientifically exploring the true origins of creative behavior.</p>
+        </div>
+        <div class="right">
+            <h2>Questions 1–5</h2>
+            <p>Complete the notes below.</p>
+            <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+            <p>Write your answers in boxes 1–5 on your answer sheet.</p>
+            
+            <div class="question-box">
+                <h3>The Dead Sea Scrolls</h3>
+                <p><strong>Discovery</strong></p>
+                <p><strong>Qumran, 1946/7</strong></p>
+                <p>- Three Bedouin shepherds in their teens were near an opening on side of cliff</p>
+                <p>- Heard a noise of breaking when one teenager threw a 1 <input type="text" id="q1"> <span id="a1"></span></p>
+                <p>- Teenagers went into the 2 <input type="text" id="q2"> <span id="a2"></span> and found a number of containers made of 3 <input type="text" id="q3"><span id="a3"></span></p>
+                <p><strong>The Scrolls</strong></p>
+                <p>- Date from between 150 BCE and 70 CE</p>
+                <p>- Thought to have been written by group of people known as the 4 <input type="text" id="q4"> <span id="a4"></span></p>
+                <p>- Written mainly in the 5 <input type="text" id="q5"> language <span id="a5"></span></p>
+            </div>
+
+            <h2>Questions 6–13</h2>
+            <p>Do the following statements agree with the information given in Reading Passage 1?</p>
+            <p>Choose the correct answer: <strong>TRUE</strong>, <strong>FALSE</strong>, or <strong>NOT GIVEN</strong>.</p>
+            
+            <div class="question-box">
+                <p>6. The Bedouin teenagers who found the scrolls were disappointed by how little money they received for them.<br>
+                   <select id="q6">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a6"></span></p>
+                <p>7. There is agreement among academics about the origin of the Dead Sea Scrolls.<br>
+                   <select id="q7">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a7"></span></p>
+                <p>8. Most of the books of the Bible written on the scrolls are incomplete.<br>
+                   <select id="q8">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a8"></span></p>
+                <p>9. The information on the Copper Scroll is written in an unusual way.<br>
+                   <select id="q9">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a9"></span></p>
+                <p>10. Mar Samuel was given some of the scrolls as a gift.<br>
+                   <select id="q10">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a10"></span></p>
+                <p>11. In the early 1950s, a number of educational establishments in the US were keen to buy scrolls from Mar Samuel.<br>
+                   <select id="q11">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a11"></span></p>
+                <p>12. The scroll that was pieced together in 2017 contains information about annual occasions in the Qumran area 2,000 years ago.<br>
+                   <select id="q12">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a12"></span></p>
+                <p>13. Academics at the University of Haifa are currently researching how to decipher the final scroll.<br>
+                   <select id="q13">
+                        <option value="">Select</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select> <span id="a13"></span></p>
+            </div>
+            <h2>Questions 14–18</h2>
+            <p>Which section contains the following information?</p>
+            <p>Write the correct letter, <strong>A–E</strong>, in boxes 14–18 on your answer sheet.</p>
+            
+            <div class="question-box">
+                <p>14. A reference to a type of tomato that can resist a dangerous infection.<br>
+                   <select id="q14">
+                        <option value="">Select</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                   </select><span id="a14"></span></p>
+                <p>15. An explanation of how problems can arise from focusing only on a certain type of tomato plant.<br>
+                   <select id="q15">
+                        <option value="">Select</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                   </select><span id="a15"></span></p>
+                <p>16. a number of examples of plants that are not cultivated at present but could be
+                    useful as food sources<br>
+                    <select id="q16">
+                        <option value="">Select</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select><span id="a16"></span></p>
+                <p>17. a comparison between the early domestication of the tomato and more recent research<br>
+                    <select id="q17">
+                        <option value="">Select</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select><span id="a17"></span></p>
+                <p>18. a personal reaction to the flavour of a tomato that has been genetically edited<br>
+                    <select id="q18">
+                        <option value="">Select</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select><span id="a18"></span></p>
+
+            </div>
+            <h2>Questions 19–23</h2>
+            <p>Match each statement with the correct researcher, <strong>A–D</strong>.</p>
+            <p>Write the correct letter in boxes 19–23 on your answer sheet.</p>
+            
+            <div class="question-box">
+                <p>19. Domestication of certain plants could allow them to adapt to future environmental challenges.<br>
+                   <select id="q19">
+                        <option value="">Select</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                   </select><span id="a19"></span></p>
+                <p>20. The idea of growing and eating unusual plants may not be accepted on a large scale.<br>
+                   <select id="q20">
+                    <option value="">Select</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                   </select><span id="a20"></span></p>
+                <p>21. It is not advisable for the future direction of certain research to be made public.<br>
+                   <select id="q21">
+                    <option value="">Select</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                   </select><span id="a21"></span></p>
+                <p>22. Present efforts to domesticate one wild fruit are limited by the costs involved.<br>
+                   <select id="q22">
+                    <option value="">Select</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                   </select><span id="a22"></span></p>
+                <p>23. Humans only make use of a small proportion of the plant food available on Earth.<br>
+                   <select id="q23">
+                    <option value="">Select</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                   </select><span id="a23"></span></p>
+                   <ul>
+                    <p><strong>A</strong> Jorg Kudla</p>
+                    <p><strong>B</strong> Caixia Gao</p>
+                    <p><strong>C</strong> Joyce Van ECk</p>
+                    <p><strong>D</strong> Jonathan Jones</p>
+                </ul>
+            </div>
+            <h2>Questions 24–26</h2>
+            <p>Complete the sentences below.</p>
+            <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+            <p>Write your answers in boxes 24–26 on your answer sheet.</p>
+            
+            <div class="question-box">
+                <p>24. An undesirable trait such as loss of <input type="text" id="q24"> may be caused by a mutation in a tomato gene.<span id="a24"></span></p>
+                <p>25. By modifying one gene in a tomato plant, researchers made the tomato three times its original <input type="text" id="q25">.<span id="a25"></span></p>
+                <p>26. A type of tomato which was not badly affected by <input type="text" id="q26">, and was rich in vitamin C, was produced by a team of researchers in China.<span id="a26"></span></p>
+            </div>
+            <h2>Questions 27–31</h2>
+            <p>Choose the correct letter, <strong>A, B, C or D</strong>.</p>
+            <p>Write the correct letter in boxes 27–31 on your answer sheet.</p>
+            
+            <div class="question-box">
+                <p>27. The purpose of the first paragraph is to <br>
+                   <input type="radio" name="q27" value="A"> A. defend particular ideas.<br>
+                   <input type="radio" name="q27" value="B"> B. compare certain beliefs.<br>
+                   <input type="radio" name="q27" value="C"> C. disprove a widely held view.<br>
+                   <input type="radio" name="q27" value="D"> D. outline a common assumption.
+                   <span id="a27"></span></p>
+                
+                <p>28. What are the writers doing in the second paragraph?<br>
+                   <input type="radio" name="q28" value="A"> A. criticising an opinion<br>
+                   <input type="radio" name="q28" value="B"> B. justifying a standpoint<br>
+                   <input type="radio" name="q28" value="C"> C. explaining an approach<br>
+                   <input type="radio" name="q28" value="D"> D. supporting an argument
+                   <span id="a28"></span></p>
+                
+                <p>29. In the third paragraph, what do the writers suggest about Darwin and Einstein?<br>
+                   <input type="radio" name="q29" value="A"> A. They represent an exception to a general rule.<br>
+                   <input type="radio" name="q29" value="B"> B. Their way of working has been misunderstood.<br>
+                   <input type="radio" name="q29" value="C"> C. They are an ideal which others should aspire to.<br>
+                   <input type="radio" name="q29" value="D"> D. Their achievements deserve greater recognition.<span id="a29"></span></p>
+                
+                <p>30. John Nicholson is an example of a person whose idea <br>
+                   <input type="radio" name="q30" value="A"> A. established his reputation as an influential scientist.<br>
+                   <input type="radio" name="q30" value="B"> B. was only fully understood at a later point in history.<br>
+                   <input type="radio" name="q30" value="C"> C. laid the foundations for someone else's breakthrough.<br>
+                   <input type="radio" name="q30" value="D"> D. initially met with scepticism from the scientific community.
+                   <span id="a30"></span></p>
+                
+                <p>31. What is the key point of interest about the 'acey-deucy' stirrup placement?<br>
+                   <input type="radio" name="q31" value="A"> A. the simple reason why it was invented<br>
+                   <input type="radio" name="q31" value="B"> B. the enthusiasm with which it was adopted<br>
+                   <input type="radio" name="q31" value="C"> C. the research that went into its development<br>
+                   <input type="radio" name="q31" value="D"> D. the cleverness of the person who first used it
+                   <span id="a31"></span></p>
+            </div>
+            <h2>Questions 32–36</h2>
+            <p>Do the following statements agree with the claims of the writer in Reading Passage 3?</p>
+            <p>In boxes 32–36 on your answer sheet, write</p> <p><strong>YES  </strong><space> if the statement agrees with the claims of the writer</space></p> <p><strong>NO  </strong><space> if the statement contradicts the claims of the writer</space></p> <p><strong>NOT GIVEN  </strong><space> if it is impossible to say what the writer thinks about this</space></p>
+            
+            <div class="question-box">
+                <p>32. The Bedouin teenagers who found the scrolls were disappointed by how little money they received for them.<br>
+                   <select id="q32">
+                        <option value="">Select</option>
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select><span id="a32"></span></p>
+                <p>33. There is agreement among academics about the origin of the Dead Sea Scrolls.<br>
+                    <select id="q33">
+                        <option value="">Select</option>
+                        <option value="YES">YES</option>
+                        <option value="NO">NO</option>
+                        <option value="NOT GIVEN">NOT GIVEN</option>
+                   </select><span id="a33"></span></p>
+                <p>34. The Law of Effect states that no planning is involved in the behaviour of organisms.<br>
+                   <select id="q34">
+                    <option value="">Select</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                    <option value="NOT GIVEN">NOT GIVEN</option>
+               </select><span id="a34"></span></p>
+                <p>35. The Law of Effect sets out clear explanations about the sources of new ideas and
+                    behaviours.<br>
+                   <select id="q35">
+                    <option value="">Select</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                    <option value="NOT GIVEN">NOT GIVEN</option>
+               </select><span id="a35"></span></p>
+                <p>36. Many scientists are now turning away from the notion of intelligent design
+                    and genius.<br>
+                   <select id="q36">
+                    <option value="">Select</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                    <option value="NOT GIVEN">NOT GIVEN</option>
+               </select><span id="a36"></span></p>
+            </div>
+            <h2>Questions</h2>
+            <p><strong>Complete the summary using the list of words, A–G, below.</strong></p>
+            <p>Write the correct letter, <strong>A–G</strong>, in boxes 37–40 on your answer sheet.</p>
+            <div style="border: 1px solid #000; padding: 10px;">
+                <h3>The origins of creative behaviour</h3>
+                <p>The traditional view of scientific discovery is that breakthroughs happen when a single great mind has sudden <strong>37</strong> 
+                    <select id="q37">
+                        <option value="">Select</option>
+                         <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                    </select><span id="a37"></span>. Although this can occur, it is not often the case. Advances are more likely to be the result of a longer process.</p>
+                <p>In some cases, this process involves <strong>38</strong> 
+                    <select id="q38">
+                        <option value="">Select</option>
+                         <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                    </select><span id="a38"></span>, such as Nicholson’s theory about proto-elements. In others, simple necessity may provoke innovation, as with Westrope’s decision to modify the position of his riding stirrups. There is also often an element of <strong>39</strong> 
+                    <select id="q39">
+                        <option value="">Select</option>
+                         <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                    </select><span id="a39"></span>, for example, the coincidence of ideas that led to the invention of the Post-It note. With both the Law of Natural Selection and the Law of Effect, there may be no clear <strong>40</strong> 
+                    <select id="q40">
+                        <option value="">Select</option>
+                         <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                    </select><span id="a40"></span> involved, but merely a process of variation and selection.</p>
+                <ul>
+                    <p><strong>A</strong> invention</p>
+                    <p><strong>B</strong> goals</p>
+                    <p><strong>C</strong> compromise</p>
+                    <p><strong>D</strong> mistakes</p>
+                    <p><strong>E</strong> luck</p>
+                    <p><strong>F</strong> inspiration</p>
+                    <p><strong>G</strong> experiments</p>
+                </ul>
+            </div>
+            
+
+            <button type="button" onclick="submitTest()">Submit</button>
+            <p id="result"></p>
+        </div>
+    </div>
+
     <script>
-        let timeLeft = 40 * 60;
-        let timerInterval;
+        function highlightSelection() {
+            let selection = window.getSelection();
+            if (!selection.rangeCount) return;
+            let range = selection.getRangeAt(0);
+            let span = document.createElement("span");
+            span.className = "highlight";
+            range.surroundContents(span);
+        }
+
+        function removeHighlight() {
+            let highlights = document.querySelectorAll(".highlight");
+            highlights.forEach(span => {
+                let parent = span.parentNode;
+                while (span.firstChild) parent.insertBefore(span.firstChild, span);
+                parent.removeChild(span);
+            });
+        }
+       const firebaseURL = "https://intensive-readfinal-test-default-rtdb.firebaseio.com/submissions.json";
         
         const correctAnswers = {
-            q1: "collecting", q2: "records", q3: "West", q4: "transport", q5: "art", q6: "hospital", q7: "garden",
-            q8: "quiz", q9: "tickets", q10: "poster", q11: "B", q12: "C", q13: "C", q14: "B",
-            q15: "D", q16: "C", q17: "G", q18: "A", q19: "E", q20: "F",
-            q21: "D,E", q22: "D,E", q23: "D", q24: "C", q25: "A", q26: "E", q27: "F",
-            q28: "B", q29: "C", q30: "C", q31: "321000", q32: "vocabulary", q33: "podcast", q34: "smartphones",
-            q35: "bilingual", q36: "playground", q37: "picture", q38: "grammar", q39: "identity", q40: "fluent"
+            1: "rock", 2: "cave", 3: "clay", 4: "Essenes", 5: "Hebrew",
+            6: "NOT GIVEN", 7: "FALSE", 8: "TRUE", 9: "TRUE", 10: "FALSE",
+            11: "FALSE", 12: "TRUE", 13: "NOT GIVEN",
+            14: "C", 15: "B", 16: "E", 17: "A", 18: "C",
+            19: "B", 20: "D", 21: "A", 22: "C", 23: "A",
+            24: "flavour|flavor", 25: "size", 26: "salt",
+            27: "D", 28: "A", 29: "A", 30: "C", 31: "A",
+            32: "NO", 33: "NOT GIVEN", 34: "YES", 35: "NO", 36: "NOT GIVEN",
+            37: "F", 38: "D", 39: "E", 40: "B"
         };
-        
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                document.getElementById("timer").textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                if (timeLeft === 0) {
-                    clearInterval(timerInterval);
-                    gradeTest();
-                }
-                timeLeft--;
-            }, 1000);
+
+        function normalizeAnswer(answer) {
+            return answer.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
         }
 
-        function gradeTest() {
-        clearInterval(timerInterval);
-        let studentName = document.getElementById("studentName").value.trim();
-        let score = 0;
-        let answers = {};
-        if (name === "") {
-            alert("Please enter your full name.");
+        async function submitTest() {
+            let userAnswers = {};
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            let userName = document.getElementById("name").value.trim();
+            if (name === "") {
+            alert("Please enter your full name before submitting.");
             return; // Dừng lại nếu tên trống
         }
-        for (let i = 1; i <= 40; i++) {
-            if (i === 21 || i === 22) continue;
+            for (let i = 1; i <= totalQuestions; i++) {
+                let answer = "";
+                let textInput = document.getElementById(`q${i}`);
+                if (textInput) {
+                    answer = normalizeAnswer(textInput.value);
+                }
+
+                let selectInput = document.querySelector(`select#q${i}`);
+                if (selectInput && selectInput.value) {
+                    answer = normalizeAnswer(selectInput.value);
+                }
+                
+                let radioInput = document.querySelector(`input[name='q${i}']:checked`);
+                if (radioInput) {
+                    answer = normalizeAnswer(radioInput.value);
+                }
+                
+                userAnswers[i] = answer;
+                let correctAns = correctAnswers[i].split("|").map(ans => normalizeAnswer(ans));
+                let answerDisplay = document.getElementById(`a${i}`);
+                
+                if (correctAns.includes(answer)) {
+                    score++;
+                    if (answerDisplay) answerDisplay.innerHTML = "✔ <span class='correct-answer'>Correct</span>";
+                } else {
+                    if (answerDisplay) {
+                        answerDisplay.innerHTML = `❌ Correct: <span class='incorrect'>${correctAnswers[i]}</span>`;
+                    }
+                }
+            }
+
+            let percentage = ((score / totalQuestions) * 100).toFixed(2) + "%";
+            document.getElementById("result").innerText = `Score: ${score}/${totalQuestions} (${percentage})`;
             
-            let input = document.querySelector(`input[name='q${i}']`);
-            let radioInput = document.querySelector(`input[name='q${i}']:checked`);
-            let selectInput = document.querySelector(`select[name='q${i}']`);
+            let submission = {
+                name: userName,
+                answers: userAnswers,
+                score: score,
+                percentage: percentage,
+                timestamp: new Date().toISOString()
+            };
             
-            if (input && input.type === "text") {
-                answers[`q${i}`] = input.value.trim().toLowerCase();
-            } else if (radioInput) {
-                answers[`q${i}`] = radioInput.value;
-            } else if (selectInput) {
-                answers[`q${i}`] = selectInput.value;
+            try {
+                await fetch(firebaseURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(submission)
+                });
+                alert("Submission saved successfully!");
+            } catch (error) {
+                console.error("Error saving submission:", error);
+                alert("Failed to save submission.");
             }
         }
-        
-        let checkboxInputs = document.querySelectorAll(`input[name='q21_22']:checked`);
-        if (checkboxInputs.length > 0) {
-            let selected = Array.from(checkboxInputs).map(cb => cb.value.toUpperCase());
-            answers["q21_22"] = selected.join(",");
-        }
-        
-        for (let key in correctAnswers) {
-            if (key === "q21" || key === "q22") continue;
-            if (answers[key] && answers[key].toLowerCase() === correctAnswers[key].toLowerCase()) {
-                score++;
-            }
-        }
-        
-        let data = {
-            studentName: studentName,
-            score: score,
-            answers: answers
-        };
-        
-        fetch('https://intensive-final-default-rtdb.firebaseio.com/responses.json', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => console.log("Data saved successfully:", data))
-        .catch(error => console.error("Error saving data:", error));
-        
-        document.getElementById("result").textContent = `Your Score: ${score}/40`;
-    }
-function resetTest() {
-    // Xóa nội dung các ô input
-    document.querySelectorAll("input[type='text']").forEach(input => input.value = "");
-    document.querySelectorAll("input[type='radio']").forEach(input => input.checked = false);
-    document.querySelectorAll("input[type='checkbox']").forEach(input => input.checked = false);
-    document.querySelectorAll("select").forEach(select => select.value = "");
-
-    // Reset tên thí sinh
-    document.getElementById("studentName").value = "";
-
-    // Xóa kết quả hiển thị
-    document.getElementById("result").textContent = "";
-
-    // Reset bộ đếm thời gian
-    clearInterval(timerInterval);
-    timeLeft = 40 * 60; // 40 phút
-    startTimer(); // Bắt đầu lại bộ đếm thời gian
-}
     </script>
-</head>
-<body onload="startTimer()">
-    <h1>IELTS Listening Test</h1>
-    <label for="studentName">Enter your name:</label>
-    <input type="text" id="studentName" name="studentName" placeholder="Your Name">
-    <div class="timer">Time Left: <span id="timer">40:00</span></div>
-    
-    <div class="section">
-        <h2>PART 1: Complete the Notes Below</h2>
-      <div class="section">
-        <h2>Listening Audio</h2>
-        <p>Listen to the audio and answer the questions below.</p>
-        <audio controls class="audio-player">
-            <source src="ELT_IELTS17_t2_audio1.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-        <p>Write ONE WORD ONLY for each answer.</p>
-        <div class="content-box">
-            <h3>Opportunities for voluntary work in Southoe village</h3>
-            
-            <h4>Library</h4>
-            <ul>
-                <li>Help with 1 <input type="text" id="q1" name="q1"> books (times to be arranged)</li>
-                <li>Help needed to keep 2 <input type="text" id="q2" name="q2"> of books up to date</li>
-                <li>Library is in the 3 <input type="text" id="q3" name="q3"> Room in the village hall</li>
-            </ul>
-            
-            <h4>Lunch club</h4>
-            <ul>
-                <li>Help by providing 4 <input type="text" id="q4" name="q4"></li>
-                <li>Help with hobbies such as 5 <input type="text" id="q5" name="q5"></li>
-            </ul>
-            
-            <h4>Help for individuals needed next week</h4>
-            <ul>
-                <li>Taking Mrs Carroll to 6 <input type="text" id="q6" name="q6"></li>
-                <li>Work in the 7 <input type="text" id="q7" name="q7"> at Mr Selsbury’s house</li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="section">
-        <h2>Complete the Table Below</h2>
-        <p>Write ONE WORD ONLY for each answer.</p>
-        <table>
-            <tr>
-                <th>Date</th><th>Event</th><th>Location</th><th>Help Needed</th>
-            </tr>
-            <tr>
-                <td>19 Oct</td>
-                <td>8 <input type="text" id="q8" name="q8"></td>
-                <td>Village hall</td>
-                <td>Providing refreshments</td>
-            </tr>
-            <tr>
-                <td>18 Nov</td>
-                <td>Dance</td>
-                <td>Village hall</td>
-                <td>Checking 9 <input type="text" id="q9" name="q9"></td>
-            </tr>
-            <tr>
-                <td>31 Dec</td>
-                <td>New Year’s Eve party</td>
-                <td>Mountfort Hotel</td>
-                <td>Designing the 10 <input type="text" id="q10" name="q10"></td>
-            </tr>
-        </table>
-    </div>
-    
-    <div class="section">
-        <div class="section">
-        <h2>Listening Audio</h2>
-        <p>Listen to the audio and answer the questions below.</p>
-        <audio controls class="audio-player">
-            <source src="ELT_IELTS17_t2_audio2.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-        <h2>PART 2: Multiple Choice</h2>
-        <p>Choose the correct letter, A, B, or C.</p>
-        <p>11. Many past owners made changes to:</p>
-        <input type="radio" name="q11" value="A"> A. the gardens<br>
-        <input type="radio" name="q11" value="B"> B. the house<br>
-        <input type="radio" name="q11" value="C"> C. the farm<br>
-        
-        <p>12. Sir Edward Downes built Oniton Hall because he wanted:</p>
-        <input type="radio" name="q12" value="A"> A. a place for discussing politics<br>
-        <input type="radio" name="q12" value="B"> B. a place to display his wealth<br>
-        <input type="radio" name="q12" value="C"> C. a place for artists and writers<br>
-        
-        <p>13. Visitors can learn about the work of servants in the past from:</p>
-        <input type="radio" name="q13" value="A"> A. audio guides<br>
-        <input type="radio" name="q13" value="B"> B. photographs<br>
-        <input type="radio" name="q13" value="C"> C. people in costume<br>
-        
-        <p>14. What is new for children at Oniton Hall?</p>
-        <input type="radio" name="q14" value="A"> A. clothes for dressing up<br>
-        <input type="radio" name="q14" value="B"> B. mini tractors<br>
-        <input type="radio" name="q14" value="C"> C. the adventure playground<br>
-    </div>
-
-    <div class="section">
-        <h2>PART 2: Matching Activities to Locations</h2>
-        <p>Choose SIX answers from the box and write the correct letter, A–H, next to Questions 15–20.</p>
-        <div class="content-box">
-            <table>
-                <tr>
-                    <th>Activities</th>
-                </tr>
-                <tr><td>A. shopping</td></tr>
-                <tr><td>B. watching cows being milked</td></tr>
-                <tr><td>C. seeing old farming equipment</td></tr>
-                <tr><td>D. eating and drinking</td></tr>
-                <tr><td>E. starting a trip</td></tr>
-                <tr><td>F. seeing rare breeds of animals</td></tr>
-                <tr><td>G. helping to look after animals</td></tr>
-                <tr><td>H. using farming tools</td></tr>
-            </table>
-        </div>
-        <table>
-            <tr>
-                <th>Locations on the farm</th><th>Answer</th>
-            </tr>
-            <tr>
-                <td>15. dairy</td>
-                <td>
-                    <select name="q15">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>16. large barn</td>
-                <td>
-                    <select name="q16">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>17. small barn</td>
-                <td>
-                    <select name="q17">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>18. stables</td>
-                <td>
-                    <select name="q18">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>19. shed</td>
-                <td>
-                    <select name="q19">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>20. parkland</td>
-                <td>
-                    <select name="q20">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                        <option value="H">H</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <h1>IELTS Listening Test - Part 3</h1>
-    
-    <div class="section">
-        <h2>Listening Audio</h2>
-        <p>Listen to the audio and answer the questions below.</p>
-        <audio controls class="audio-player">
-            <source src="ELT_IELTS17_t2_audio3.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="section">
-        <h2>PART 3: Questions 21-30</h2>
-        
-        <h3>Questions 21 and 22</h3>
-        <p>Choose <strong>TWO</strong> letters, A–E.</p>
-        <p>Which <strong>TWO</strong> things do the students agree they need to include in their reviews of <em>Romeo and Juliet</em>?</p>
-        
-        <input type="checkbox" name="q21_22" value="A"> A. Analysis of the text<br>
-        <input type="checkbox" name="q21_22" value="B"> B. A summary of the plot<br>
-        <input type="checkbox" name="q21_22" value="C"> C. A description of the theatre<br>
-        <input type="checkbox" name="q21_22" value="D"> D. A personal reaction<br>
-        <input type="checkbox" name="q21_22" value="E"> E. A reference to particular scenes<br>
-        
-        <h3>Questions 23-27</h3>
-        <p>Which opinion do the speakers give about each of the following aspects of The Emporium’s production of <em>Romeo and Juliet</em>?</p>
-        <p>Choose <strong>FIVE</strong> answers from the box and write the correct letter, A–G, next to Questions 23–27.</p>
-        
-        <table>
-            <tr>
-                <th>Opinions</th>
-            </tr>
-            <tr><td>A. They both expected this to be more traditional.</td></tr>
-            <tr><td>B. They both thought this was original.</td></tr>
-            <tr><td>C. They agree this created the right atmosphere.</td></tr>
-            <tr><td>D. They agree this was a major strength.</td></tr>
-            <tr><td>E. They were both disappointed by this.</td></tr>
-            <tr><td>F. They disagree about why this was an issue.</td></tr>
-            <tr><td>G. They disagree about how this could be improved.</td></tr>
-        </table>
-        
-        <table>
-            <tr>
-                <th>Aspects of the production</th>
-                <th>Answer (A-G)</th>
-            </tr>
-            <tr>
-                <td>23. The set</td>
-                <td>
-                    <select name="q23">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>24. The lighting</td>
-                <td>
-                    <select name="q24">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>25. The costume design</td>
-                <td>
-                    <select name="q25">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>26. The music</td>
-                <td>
-                    <select name="q26">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>27. The actors’ delivery</td>
-                <td>
-                    <select name="q27">
-                        <option value="">Select</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
-
-        <h3>Questions 28-30</h3>
-        <p>Choose the correct letter, A, B, or C.</p>
-        <p>28. The students think the story of <em>Romeo and Juliet</em> is still relevant for young people today because</p>
-        <input type="radio" name="q28" value="A"> A. it illustrates how easily conflict can start.<br>
-        <input type="radio" name="q28" value="B"> B. it deals with problems that families experience.<br>
-        <input type="radio" name="q28" value="C"> C. it teaches them about relationships.<br>
-        
-        <p>29. The students found watching <em>Romeo and Juliet</em> in another language</p>
-        <input type="radio" name="q29" value="A"> A. frustrating.<br>
-        <input type="radio" name="q29" value="B"> B. demanding.<br>
-        <input type="radio" name="q29" value="C"> C. moving.<br>
-        
-        <p>30. Why do the students think Shakespeare’s plays have such international appeal?</p>
-        <input type="radio" name="q30" value="A"> A. The stories are exciting.<br>
-        <input type="radio" name="q30" value="B"> B. There are recognisable characters.<br>
-        <input type="radio" name="q30" value="C"> C. They can be interpreted in many ways.<br>
-    </div>
-    <h1>IELTS Listening Test - Part 4</h1>
-    
-    <div class="section">
-        <h2>Listening Audio</h2>
-        <p>Listen to the audio and answer the questions below.</p>
-        <audio controls class="audio-player">
-            <source src="ELT_IELTS17_t2_audio4.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="section">
-        <h2>PART 4: Questions 31-40</h2>
-        <p>Complete the notes below. Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
-        <h3>The impact of digital technology on the Icelandic language</h3>
-        <p><strong>The Icelandic language</strong></p>
-        <ul>
-            <li>Has approximately 31 <input type="text" name="q31" size="5"> speakers</li>
-            <li>Has a 32 <input type="text" name="q32" size="15"> that is still growing</li>
-            <li>Has not changed a lot over the last thousand years</li>
-            <li>Has its own words for computer-based concepts, such as web browser and 33 <input type="text" name="q33" size="15"></li>
-        </ul>
-        
-        <p><strong>Young speakers</strong></p>
-        <ul>
-            <li>Are big users of digital technology, such as 34 <input type="text" name="q34" size="15"></li>
-            <li>Are becoming 35 <input type="text" name="q35" size="15"> very quickly</li>
-            <li>Are having discussions using only English while they are in the 36 <input type="text" name="q36" size="15"> at school</li>
-            <li>Are better able to identify the content of a 37 <input type="text" name="q37" size="15"> in English than Icelandic</li>
-        </ul>
-        
-        <p><strong>Technology and internet companies</strong></p>
-        <ul>
-            <li>Write very little in Icelandic because of the small number of speakers and because of how complicated its 38 <input type="text" name="q38" size="15"> is</li>
-        </ul>
-        
-        <p><strong>The Icelandic government</strong></p>
-        <ul>
-            <li>Has set up a fund to support the production of more digital content in the language</li>
-            <li>Believes that Icelandic has a secure future</li>
-            <li>Is worried that young Icelanders may lose their 39 <input type="text" name="q39" size="15"> as Icelanders</li>
-            <li>Is worried about the consequences of children not being 40 <input type="text" name="q40" size="15"> in either Icelandic or English</li>
-        </ul>
-    </div>
-    <button onclick="gradeTest()">Submit</button>
-    <div id="result" class="result"></div>
 </body>
 </html>
