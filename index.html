@@ -644,9 +644,6 @@
             let score = 0;
             let totalQuestions = Object.keys(correctAnswers).length;
             let userName = document.getElementById("name").value.trim();
-            if (name === "") {
-            alert("Please enter your full name before submitting.");
-            return; // Dừng lại nếu tên trống
         }
             for (let i = 1; i <= totalQuestions; i++) {
                 let answer = "";
