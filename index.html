@@ -371,7 +371,7 @@
                         <option value="">Select</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
-                        <option value="C">C</option>
+                        <option value="C">C">C</option>
                         <option value="D">D</option>
                         <option value="E">E</option>
                     </select><span id="a16"></span></p>
@@ -621,7 +621,8 @@
                 parent.removeChild(span);
             });
         }
-       const firebaseURL = "https://intensive-readfinal-test-default-rtdb.firebaseio.com/submissions.json";
+
+        const firebaseURL = "https://intensive-readfinal-test-default-rtdb.firebaseio.com/submissions.json";
         
         const correctAnswers = {
             1: "rock", 2: "cave", 3: "clay", 4: "Essenes", 5: "Hebrew",
@@ -644,7 +645,7 @@
             let score = 0;
             let totalQuestions = Object.keys(correctAnswers).length;
             let userName = document.getElementById("name").value.trim();
-        }
+
             for (let i = 1; i <= totalQuestions; i++) {
                 let answer = "";
                 let textInput = document.getElementById(`q${i}`);
@@ -698,6 +699,7 @@
                 console.error("Error saving submission:", error);
                 alert("Failed to save submission.");
             }
+        }
     </script>
 </body>
 </html>
